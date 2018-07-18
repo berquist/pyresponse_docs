@@ -1,0 +1,5 @@
+<map id="inheritancea8845db9fe" name="inheritancea8845db9fe">
+<area shape="rect" id="node1" href="#pyresponse.ecd.ECD" target="_top" title="Wrapper for performing an electronic circular dichroism (ECD)" alt="" coords="640,4,764,25"/>
+<area shape="rect" id="node2" href="#pyresponse.molecular_property.TransitionProperty" target="_top" title="pyresponse.molecular_property.TransitionProperty" alt="" coords="322,4,601,25"/>
+<area shape="rect" id="node3" href="#pyresponse.molecular_property.MolecularProperty" target="_top" title="pyresponse.molecular_property.MolecularProperty" alt="" coords="4,4,283,25"/>
+</map>
