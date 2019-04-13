@@ -17,32 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -296,8 +300,8 @@
         <span class="n">nov_alph</span> <span class="o">=</span> <span class="n">nocc_alph</span> <span class="o">*</span> <span class="n">nvirt_alph</span>
         <span class="n">nov_beta</span> <span class="o">=</span> <span class="n">nocc_beta</span> <span class="o">*</span> <span class="n">nvirt_beta</span>
 
-        <span class="n">superoverlap_alph</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">,</span> <span class="n">nov_alph</span><span class="p">))],</span>
-                                                <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">,</span> <span class="n">nov_alph</span><span class="p">)),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">)]]))</span>
+        <span class="n">superoverlap_alph</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">,</span> <span class="n">nov_alph</span><span class="p">))],</span>
+                                      <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">,</span> <span class="n">nov_alph</span><span class="p">)),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">)]])</span>
         <span class="n">superoverlap_alph</span> <span class="o">=</span> <span class="n">superoverlap_alph</span> <span class="o">*</span> <span class="n">frequency</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>
@@ -338,8 +342,8 @@
                     <span class="n">A</span> <span class="o">=</span> <span class="n">form_rpa_a_matrix_mo_triplet_partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">moenergies</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tei_mo_oovv</span><span class="p">)</span>
                     <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">,</span> <span class="n">nov_alph</span><span class="p">))</span>
 
-            <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">],</span>
-                                    <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">]]))</span>
+            <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">],</span>
+                          <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">]])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">explicit_hessian</span> <span class="o">=</span> <span class="n">G</span> <span class="o">-</span> <span class="n">superoverlap_alph</span>
 
         <span class="k">else</span><span class="p">:</span>
@@ -475,18 +479,18 @@
                     <span class="n">B_ss_b</span> <span class="o">=</span> <span class="n">zeros_bb</span>
                     <span class="n">B_os_b</span> <span class="o">=</span> <span class="n">zeros_ba</span>
 
-            <span class="n">superoverlap_beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">,</span> <span class="n">nov_beta</span><span class="p">))],</span>
-                                                    <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">,</span> <span class="n">nov_beta</span><span class="p">)),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">)]]))</span>
+            <span class="n">superoverlap_beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">,</span> <span class="n">nov_beta</span><span class="p">))],</span>
+                                          <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">,</span> <span class="n">nov_beta</span><span class="p">)),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nov_beta</span><span class="p">)]])</span>
             <span class="n">superoverlap_beta</span> <span class="o">=</span> <span class="n">superoverlap_beta</span> <span class="o">*</span> <span class="n">frequency</span>
 
-            <span class="n">G_aa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A_ss_a</span><span class="p">,</span> <span class="n">B_ss_a</span><span class="p">],</span>
-                                       <span class="p">[</span><span class="n">B_ss_a</span><span class="p">,</span> <span class="n">A_ss_a</span><span class="p">]]))</span>
-            <span class="n">G_ab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A_os_a</span><span class="p">,</span> <span class="n">B_os_a</span><span class="p">],</span>
-                                       <span class="p">[</span><span class="n">B_os_a</span><span class="p">,</span> <span class="n">A_os_a</span><span class="p">]]))</span>
-            <span class="n">G_ba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A_os_b</span><span class="p">,</span> <span class="n">B_os_b</span><span class="p">],</span>
-                                       <span class="p">[</span><span class="n">B_os_b</span><span class="p">,</span> <span class="n">A_os_b</span><span class="p">]]))</span>
-            <span class="n">G_bb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A_ss_b</span><span class="p">,</span> <span class="n">B_ss_b</span><span class="p">],</span>
-                                       <span class="p">[</span><span class="n">B_ss_b</span><span class="p">,</span> <span class="n">A_ss_b</span><span class="p">]]))</span>
+            <span class="n">G_aa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">A_ss_a</span><span class="p">,</span> <span class="n">B_ss_a</span><span class="p">],</span>
+                             <span class="p">[</span><span class="n">B_ss_a</span><span class="p">,</span> <span class="n">A_ss_a</span><span class="p">]])</span>
+            <span class="n">G_ab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">A_os_a</span><span class="p">,</span> <span class="n">B_os_a</span><span class="p">],</span>
+                             <span class="p">[</span><span class="n">B_os_a</span><span class="p">,</span> <span class="n">A_os_a</span><span class="p">]])</span>
+            <span class="n">G_ba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">A_os_b</span><span class="p">,</span> <span class="n">B_os_b</span><span class="p">],</span>
+                             <span class="p">[</span><span class="n">B_os_b</span><span class="p">,</span> <span class="n">A_os_b</span><span class="p">]])</span>
+            <span class="n">G_bb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">A_ss_b</span><span class="p">,</span> <span class="n">B_ss_b</span><span class="p">],</span>
+                             <span class="p">[</span><span class="n">B_ss_b</span><span class="p">,</span> <span class="n">A_ss_b</span><span class="p">]])</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">explicit_hessian</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="n">G_aa</span> <span class="o">-</span> <span class="n">superoverlap_alph</span><span class="p">,</span>
@@ -705,8 +709,8 @@
                     <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">nov_alph</span><span class="p">,</span> <span class="n">nov_alph</span><span class="p">))</span>
 
             <span class="c1"># pylint: disable=bad-whitespace</span>
-            <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span> <span class="n">A</span><span class="p">,</span>  <span class="n">B</span><span class="p">],</span>
-                                    <span class="p">[</span><span class="o">-</span><span class="n">B</span><span class="p">,</span> <span class="o">-</span><span class="n">A</span><span class="p">]]))</span>
+            <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span> <span class="n">A</span><span class="p">,</span>  <span class="n">B</span><span class="p">],</span>
+                          <span class="p">[</span><span class="o">-</span><span class="n">B</span><span class="p">,</span> <span class="o">-</span><span class="n">A</span><span class="p">]])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">explicit_hessian</span> <span class="o">=</span> <span class="n">G</span>
 
         <span class="k">else</span><span class="p">:</span>
@@ -821,7 +825,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Eric Berquist.
+        &copy; Copyright 2019, Eric Berquist
 
     </p>
   </div>
@@ -838,33 +842,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

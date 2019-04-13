@@ -17,33 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Table of Contents" href="contents.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -163,23 +167,23 @@
 <p>For documentation, go to <a class="reference external" href="https://berquist.github.io/pyresponse_docs/">https://berquist.github.io/pyresponse_docs/</a>.</p>
 <p>Currently, the goal is to provide:</p>
 <ol class="arabic simple">
-<li>a pedagogical example of a working molecular orbital response program as an almost direct translation from equations to code,</li>
-<li>an implementation that gives “exact” results for testing, and</li>
-<li>an example of testing and documenting scientific code using modern software development tools.</li>
+<li><p>a pedagogical example of a working molecular orbital response program as an almost direct translation from equations to code,</p></li>
+<li><p>an implementation that gives “exact” results for testing, and</p></li>
+<li><p>an example of testing and documenting scientific code using modern software development tools.</p></li>
 </ol>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Python &gt;= [STRIKEOUT:3.2 because of pyscf]3.6 because of <a class="reference external" href="https://cito.github.io/blog/f-strings/">f-strings</a>.</li>
-<li><a class="reference external" href="https://github.com/sunqm/pyscf">pyscf</a> and its dependencies</li>
+<li><p>Python &gt;= [STRIKEOUT:3.2 because of pyscf]3.6 because of <a class="reference external" href="https://cito.github.io/blog/f-strings/">f-strings</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/sunqm/pyscf">pyscf</a> and its dependencies</p></li>
 </ul>
 <div class="section" id="other-python-dependencies">
 <h3>Other Python dependencies<a class="headerlink" href="#other-python-dependencies" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pkienzle/periodictable">periodictable</a> (for calculating the center of mass)</li>
-<li><a class="reference external" href="http://doc.pytest.org/en/latest/">pytest</a> (for testing)</li>
-<li><a class="reference external" href="https://github.com/vahtras/daltools">daltools</a> (for testing?)</li>
-<li><a class="reference external" href="https://github.com/cclib/cclib">cclib</a> (for ?)</li>
+<li><p><a class="reference external" href="https://github.com/pkienzle/periodictable">periodictable</a> (for calculating the center of mass)</p></li>
+<li><p><a class="reference external" href="http://doc.pytest.org/en/latest/">pytest</a> (for testing)</p></li>
+<li><p><a class="reference external" href="https://github.com/vahtras/daltools">daltools</a> (for testing?)</p></li>
+<li><p><a class="reference external" href="https://github.com/cclib/cclib">cclib</a> (for ?)</p></li>
 </ul>
 </div>
 </div>
@@ -192,35 +196,35 @@
 <div class="section" id="caveats">
 <h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>RHF and UHF references only.</li>
-<li>Hartree-Fock and DFT only; no post-HF methods yet.</li>
-<li>Because the dimensioning of all arrays is based around the ov/vo space, methods that have non-zero contributions from the oo space (specifically derivatives of GIAOs/London orbitals w.r.t. the B-field) are not currently possible.</li>
-<li>No iterative schemes are implemented, only “exact” methods involving explicit construction of the full orbital Hessian and then inverting it (for response) or diagonalizing it (for excitation energies/transition moments/residues). Better have lots of memory!</li>
-<li>Linear response and single residues only.</li>
-<li><em>unrestricted diagonalization-based properties are not implemented/working</em></li>
+<li><p>RHF and UHF references only.</p></li>
+<li><p>Hartree-Fock and DFT only; no post-HF methods yet.</p></li>
+<li><p>Because the dimensioning of all arrays is based around the ov/vo space, methods that have non-zero contributions from the oo space (specifically derivatives of GIAOs/London orbitals w.r.t. the B-field) are not currently possible.</p></li>
+<li><p>No iterative schemes are implemented, only “exact” methods involving explicit construction of the full orbital Hessian and then inverting it (for response) or diagonalizing it (for excitation energies/transition moments/residues). Better have lots of memory!</p></li>
+<li><p>Linear response and single residues only.</p></li>
+<li><p><em>unrestricted diagonalization-based properties are not implemented/working</em></p></li>
 </ul>
 </div>
 <div class="section" id="desired-features-in-no-specific-order">
 <h2>Desired features (in no specific order)<a class="headerlink" href="#desired-features-in-no-specific-order" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Non-orthogonal orbitals. Requires switch from using MO energies to full Fock matrices.</li>
-<li>ROHF reference (compare against DALTON). Requires equations for the ROHF orbital Hessian.</li>
-<li>Post-HF support: MP2, CCSD, and CIS. Requires constriction of a Lagrangian.</li>
-<li>Support for GIAOs. Only requires re-dimensioning as long as AO matrix elements are available??</li>
-<li>At least one iterative method for each property type, for example DIIS for inversion and Davidson for diagonalization. Requires matrix-vector products.</li>
-<li>Quadratic response and associated single residues (needed for phosphorescence) and double residues (excited state expectation values and transition moments of linear operators). Requires permutation of linear response solution vectors.</li>
+<li><p>Non-orthogonal orbitals. Requires switch from using MO energies to full Fock matrices.</p></li>
+<li><p>ROHF reference (compare against DALTON). Requires equations for the ROHF orbital Hessian.</p></li>
+<li><p>Post-HF support: MP2, CCSD, and CIS. Requires constriction of a Lagrangian.</p></li>
+<li><p>Support for GIAOs. Only requires re-dimensioning as long as AO matrix elements are available??</p></li>
+<li><p>At least one iterative method for each property type, for example DIIS for inversion and Davidson for diagonalization. Requires matrix-vector products.</p></li>
+<li><p>Quadratic response and associated single residues (needed for phosphorescence) and double residues (excited state expectation values and transition moments of linear operators). Requires permutation of linear response solution vectors.</p></li>
 </ul>
 </div>
 <div class="section" id="desired-features-that-don-t-fix-the-caveats">
 <h2>Desired features that don’t fix the caveats<a class="headerlink" href="#desired-features-that-don-t-fix-the-caveats" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Open-ended response: see <a class="reference external" href="https://doi.org/10.1002/jcc.23533">Ringholm, Jonsson, and Ruud</a>.</li>
-<li>Finite-difference for testing and higher-order response.</li>
-<li>Independence from pyscf, requires molecule/basis set handling, AO integral engine, and RHF/UHF solver.</li>
-<li>Interface to <a class="reference external" href="https://github.com/berquist/pyquante">PyQuante</a> and/or <a class="reference external" href="https://github.com/rpmuller/pyquante2">pyquante2</a>.</li>
-<li>Interface to <a class="reference external" href="https://github.com/psi4/psi4">Psi4</a> (through Python, not C++).</li>
-<li>Jupyter Notebook-based tutorials.</li>
-<li>Argument type-checking using <a class="reference external" href="http://mypy-lang.org/">mypy</a>.</li>
+<li><p>Open-ended response: see <a class="reference external" href="https://doi.org/10.1002/jcc.23533">Ringholm, Jonsson, and Ruud</a>.</p></li>
+<li><p>Finite-difference for testing and higher-order response.</p></li>
+<li><p>Independence from pyscf, requires molecule/basis set handling, AO integral engine, and RHF/UHF solver.</p></li>
+<li><p>Interface to <a class="reference external" href="https://github.com/berquist/pyquante">PyQuante</a> and/or <a class="reference external" href="https://github.com/rpmuller/pyquante2">pyquante2</a>.</p></li>
+<li><p>Interface to <a class="reference external" href="https://github.com/psi4/psi4">Psi4</a> (through Python, not C++).</p></li>
+<li><p>Jupyter Notebook-based tutorials.</p></li>
+<li><p>Argument type-checking using <a class="reference external" href="http://mypy-lang.org/">mypy</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="references">
@@ -238,7 +242,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="contents.html" class="btn btn-neutral" title="Table of Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="contents.html" class="btn btn-neutral float-left" title="Table of Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -247,7 +251,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Eric Berquist.
+        &copy; Copyright 2019, Eric Berquist
 
     </p>
   </div>
@@ -264,33 +268,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
