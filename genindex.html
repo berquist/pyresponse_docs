@@ -156,6 +156,7 @@
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -193,6 +194,8 @@
 </li>
       <li><a href="pyresponse.html#pyresponse.helpers.calc_center_of_nuclear_charge">calc_center_of_nuclear_charge() (in module pyresponse.helpers)</a>
 </li>
+      <li><a href="pyresponse.html#pyresponse.operators.Operator.calculate_ao_integrals">calculate_ao_integrals() (pyresponse.operators.Operator method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyresponse.html#pyresponse.helpers.calculate_dipole_pyscf">calculate_dipole_pyscf() (in module pyresponse.helpers)</a>
@@ -200,6 +203,10 @@
       <li><a href="pyresponse.html#pyresponse.helpers.calculate_origin_pyscf">calculate_origin_pyscf() (in module pyresponse.helpers)</a>
 </li>
       <li><a href="pyresponse.html#pyresponse.utils.clean_dalton_label">clean_dalton_label() (in module pyresponse.utils)</a>
+</li>
+      <li><a href="pyresponse.html#pyresponse.integrals.JK.compute_from_density">compute_from_density() (pyresponse.integrals.JK method)</a>
+</li>
+      <li><a href="pyresponse.html#pyresponse.integrals.JK.compute_from_mocoeffs">compute_from_mocoeffs() (pyresponse.integrals.JK method)</a>
 </li>
       <li><a href="pyresponse.html#pyresponse.cphf.CPHF">CPHF (class in pyresponse.cphf)</a>
 </li>
@@ -265,8 +272,6 @@
         <li><a href="pyresponse.html#pyresponse.iterators.ExactDiagonalizationSolverTDA.form_explicit_hessian">(pyresponse.iterators.ExactDiagonalizationSolverTDA method)</a>
 </li>
         <li><a href="pyresponse.html#pyresponse.iterators.ExactLineqSolver.form_explicit_hessian">(pyresponse.iterators.ExactLineqSolver method)</a>
-</li>
-        <li><a href="pyresponse.html#pyresponse.iterators.Solver.form_explicit_hessian">(pyresponse.iterators.Solver method)</a>
 </li>
       </ul></li>
       <li><a href="pyresponse.html#pyresponse.utils.form_first_hyperpolarizability_averages">form_first_hyperpolarizability_averages() (in module pyresponse.utils)</a>
@@ -389,12 +394,30 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pyresponse.html#pyresponse.integrals.Integrals">Integrals (class in pyresponse.integrals)</a>
+</li>
+      <li><a href="pyresponse.html#pyresponse.integrals.Integrals.integrals">integrals() (pyresponse.integrals.Integrals method)</a>
+</li>
       <li><a href="pyresponse.html#pyresponse.iterators.ExactInv.invert_explicit_hessian">invert_explicit_hessian() (pyresponse.iterators.ExactInv method)</a>
 
       <ul>
         <li><a href="pyresponse.html#pyresponse.iterators.ExactInvCholesky.invert_explicit_hessian">(pyresponse.iterators.ExactInvCholesky method)</a>
 </li>
+        <li><a href="pyresponse.html#pyresponse.iterators.ExactLineqSolver.invert_explicit_hessian">(pyresponse.iterators.ExactLineqSolver method)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pyresponse.html#pyresponse.iterators.IterativeLinEqSolver">IterativeLinEqSolver (class in pyresponse.iterators)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pyresponse.html#pyresponse.integrals.JK">JK (class in pyresponse.integrals)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -545,10 +568,10 @@
 </li>
       <li><a href="pyresponse.html#pyresponse.utils.read_file_4">read_file_4() (in module pyresponse.utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyresponse.html#pyresponse.utils.read_file_occupations">read_file_occupations() (in module pyresponse.utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pyresponse.html#pyresponse.utils.repack_matrix_to_vector">repack_matrix_to_vector() (in module pyresponse.utils)</a>
 </li>
       <li><a href="pyresponse.html#pyresponse.utils.repack_vector_to_matrix">repack_vector_to_matrix() (in module pyresponse.utils)</a>
@@ -558,6 +581,8 @@
       <li><a href="pyresponse.html#pyresponse.cphf.CPHF.run">run() (pyresponse.cphf.CPHF method)</a>
 
       <ul>
+        <li><a href="pyresponse.html#pyresponse.iterators.IterativeLinEqSolver.run">(pyresponse.iterators.IterativeLinEqSolver method)</a>
+</li>
         <li><a href="pyresponse.html#pyresponse.molecular_property.MolecularProperty.run">(pyresponse.molecular_property.MolecularProperty method)</a>
 </li>
         <li><a href="pyresponse.html#pyresponse.td.TDHF.run">(pyresponse.td.TDHF method)</a>

@@ -521,6 +521,37 @@ beta-spin UHF values.</p>
 </div>
 <div class="section" id="module-pyresponse.integrals">
 <span id="pyresponse-integrals-module"></span><h2>pyresponse.integrals module<a class="headerlink" href="#module-pyresponse.integrals" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyresponse.integrals.Integrals">
+<em class="property">class </em><code class="sig-prename descclassname">pyresponse.integrals.</code><code class="sig-name descname">Integrals</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/integrals.html#Integrals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.integrals.Integrals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="method">
+<dt id="pyresponse.integrals.Integrals.integrals">
+<code class="sig-name descname">integrals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">label</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/pyresponse/integrals.html#Integrals.integrals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.integrals.Integrals.integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyresponse.integrals.JK">
+<em class="property">class </em><code class="sig-prename descclassname">pyresponse.integrals.</code><code class="sig-name descname">JK</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/integrals.html#JK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.integrals.JK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Interface for computing Coulomb and exchange integrals pre-contracted with
+the density.</p>
+<dl class="method">
+<dt id="pyresponse.integrals.JK.compute_from_density">
+<em class="property">abstract </em><code class="sig-name descname">compute_from_density</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">D</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/integrals.html#JK.compute_from_density"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.integrals.JK.compute_from_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute J and K from some density.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyresponse.integrals.JK.compute_from_mocoeffs">
+<em class="property">abstract </em><code class="sig-name descname">compute_from_mocoeffs</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">C_left</em>, <em class="sig-param">C_right=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/integrals.html#JK.compute_from_mocoeffs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.integrals.JK.compute_from_mocoeffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute J and K from MO coefficients.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="pyresponse.integrals.parse_aoproper">
 <code class="sig-prename descclassname">pyresponse.integrals.</code><code class="sig-name descname">parse_aoproper</code><span class="sig-paren">(</span><em class="sig-param">integralfilename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/integrals.html#parse_aoproper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.integrals.parse_aoproper" title="Permalink to this definition">¶</a></dt>
@@ -534,7 +565,11 @@ matrices to disk if asked.</p>
 <dd><p>Return the bytes present in the given binary file name.</p>
 </dd></dl>
 
-</div>
+<div class="graphviz"><img src="_images/inheritance-0585bc3333dd36c10dfc7044c6b918cd68656a3b.png" alt="Inheritance diagram of pyresponse.integrals" usemap="#inheritance4982429108" class="inheritance graphviz" /></div>
+<map id="inheritance4982429108" name="inheritance4982429108">
+<area shape="rect" id="node2" href="#pyresponse.integrals.Integrals" target="_top" title="pyresponse.integrals.Integrals" alt="" coords="129,5,348,31"/>
+<area shape="rect" id="node3" href="#pyresponse.integrals.JK" target="_top" title="Interface for computing Coulomb and exchange integrals pre&#45;contracted with" alt="" coords="151,55,326,80"/>
+</map></div>
 <div class="section" id="module-pyresponse.iterators">
 <span id="pyresponse-iterators-module"></span><h2>pyresponse.iterators module<a class="headerlink" href="#module-pyresponse.iterators" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -593,7 +628,8 @@ matrices to disk if asked.</p>
 <dl class="method">
 <dt id="pyresponse.iterators.ExactInv.invert_explicit_hessian">
 <code class="sig-name descname">invert_explicit_hessian</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#ExactInv.invert_explicit_hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.ExactInv.invert_explicit_hessian" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Invert the full explicitly-constructed electronic Hessian.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -604,14 +640,15 @@ matrices to disk if asked.</p>
 <dl class="method">
 <dt id="pyresponse.iterators.ExactInvCholesky.invert_explicit_hessian">
 <code class="sig-name descname">invert_explicit_hessian</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#ExactInvCholesky.invert_explicit_hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.ExactInvCholesky.invert_explicit_hessian" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Invert the full explicitly-constructed electronic Hessian.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pyresponse.iterators.ExactLineqSolver">
 <em class="property">class </em><code class="sig-prename descclassname">pyresponse.iterators.</code><code class="sig-name descname">ExactLineqSolver</code><span class="sig-paren">(</span><em class="sig-param">mocoeffs</em>, <em class="sig-param">moenergies</em>, <em class="sig-param">occupations</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#ExactLineqSolver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.ExactLineqSolver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pyresponse.iterators.LineqSolver" title="pyresponse.iterators.LineqSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyresponse.iterators.LineqSolver</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#pyresponse.iterators.LineqSolver" title="pyresponse.iterators.LineqSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyresponse.iterators.LineqSolver</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <dl class="method">
 <dt id="pyresponse.iterators.ExactLineqSolver.form_explicit_hessian">
 <code class="sig-name descname">form_explicit_hessian</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">hamiltonian=None</em>, <em class="sig-param">spin=None</em>, <em class="sig-param">frequency=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#ExactLineqSolver.form_explicit_hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.ExactLineqSolver.form_explicit_hessian" title="Permalink to this definition">¶</a></dt>
@@ -620,6 +657,23 @@ matrices to disk if asked.</p>
 <dl class="method">
 <dt id="pyresponse.iterators.ExactLineqSolver.form_response_vectors">
 <code class="sig-name descname">form_response_vectors</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#ExactLineqSolver.form_response_vectors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.ExactLineqSolver.form_response_vectors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyresponse.iterators.ExactLineqSolver.invert_explicit_hessian">
+<em class="property">abstract </em><code class="sig-name descname">invert_explicit_hessian</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#ExactLineqSolver.invert_explicit_hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.ExactLineqSolver.invert_explicit_hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invert the full explicitly-constructed electronic Hessian.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyresponse.iterators.IterativeLinEqSolver">
+<em class="property">class </em><code class="sig-prename descclassname">pyresponse.iterators.</code><code class="sig-name descname">IterativeLinEqSolver</code><span class="sig-paren">(</span><em class="sig-param">mocoeffs</em>, <em class="sig-param">moenergies</em>, <em class="sig-param">occupations</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#IterativeLinEqSolver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.IterativeLinEqSolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyresponse.iterators.LineqSolver" title="pyresponse.iterators.LineqSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyresponse.iterators.LineqSolver</span></code></a></p>
+<dl class="method">
+<dt id="pyresponse.iterators.IterativeLinEqSolver.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#IterativeLinEqSolver.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.IterativeLinEqSolver.run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -633,15 +687,10 @@ matrices to disk if asked.</p>
 <dl class="class">
 <dt id="pyresponse.iterators.Solver">
 <em class="property">class </em><code class="sig-prename descclassname">pyresponse.iterators.</code><code class="sig-name descname">Solver</code><span class="sig-paren">(</span><em class="sig-param">mocoeffs</em>, <em class="sig-param">moenergies</em>, <em class="sig-param">occupations</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#Solver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.Solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <dl class="method">
 <dt id="pyresponse.iterators.Solver.add_operator">
 <code class="sig-name descname">add_operator</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">operator</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#Solver.add_operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.Solver.add_operator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pyresponse.iterators.Solver.form_explicit_hessian">
-<code class="sig-name descname">form_explicit_hessian</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">hamiltonian=None</em>, <em class="sig-param">spin=None</em>, <em class="sig-param">frequency=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/iterators.html#Solver.form_explicit_hessian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.iterators.Solver.form_explicit_hessian" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -661,17 +710,18 @@ matrices to disk if asked.</p>
 
 </dd></dl>
 
-<div class="graphviz"><img src="_images/inheritance-67c4a0c18dc8503b5d40cc83b327afd256ece085.png" alt="Inheritance diagram of pyresponse.iterators" usemap="#inheritance0455519dae" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-19629412db11b3f954101664b4b6feb29377ff3c.png" alt="Inheritance diagram of pyresponse.iterators" usemap="#inheritance0455519dae" class="inheritance graphviz" /></div>
 <map id="inheritance0455519dae" name="inheritance0455519dae">
-<area shape="rect" id="node1" href="#pyresponse.iterators.EigSolver" target="_top" title="pyresponse.iterators.EigSolver" alt="" coords="155,32,286,47"/>
-<area shape="rect" id="node3" href="#pyresponse.iterators.EigSolverTDA" target="_top" title="pyresponse.iterators.EigSolverTDA" alt="" coords="346,3,493,18"/>
-<area shape="rect" id="node4" href="#pyresponse.iterators.ExactDiagonalizationSolver" target="_top" title="pyresponse.iterators.ExactDiagonalizationSolver" alt="" coords="319,32,519,47"/>
-<area shape="rect" id="node2" href="#pyresponse.iterators.Solver" target="_top" title="pyresponse.iterators.Solver" alt="" coords="3,47,122,62"/>
-<area shape="rect" id="node9" href="#pyresponse.iterators.LineqSolver" target="_top" title="pyresponse.iterators.LineqSolver" alt="" coords="151,62,290,77"/>
-<area shape="rect" id="node5" href="#pyresponse.iterators.ExactDiagonalizationSolverTDA" target="_top" title="pyresponse.iterators.ExactDiagonalizationSolverTDA" alt="" coords="548,10,765,25"/>
-<area shape="rect" id="node6" href="#pyresponse.iterators.ExactInv" target="_top" title="pyresponse.iterators.ExactInv" alt="" coords="592,47,720,62"/>
-<area shape="rect" id="node7" href="#pyresponse.iterators.ExactLineqSolver" target="_top" title="pyresponse.iterators.ExactLineqSolver" alt="" coords="339,62,500,77"/>
-<area shape="rect" id="node8" href="#pyresponse.iterators.ExactInvCholesky" target="_top" title="pyresponse.iterators.ExactInvCholesky" alt="" coords="575,76,738,91"/>
+<area shape="rect" id="node3" href="#pyresponse.iterators.Solver" target="_top" title="pyresponse.iterators.Solver" alt="" coords="70,56,179,70"/>
+<area shape="rect" id="node8" href="#pyresponse.iterators.ExactLineqSolver" target="_top" title="pyresponse.iterators.ExactLineqSolver" alt="" coords="376,83,523,97"/>
+<area shape="rect" id="node2" href="#pyresponse.iterators.EigSolver" target="_top" title="pyresponse.iterators.EigSolver" alt="" coords="209,30,328,43"/>
+<area shape="rect" id="node4" href="#pyresponse.iterators.EigSolverTDA" target="_top" title="pyresponse.iterators.EigSolverTDA" alt="" coords="383,3,517,17"/>
+<area shape="rect" id="node5" href="#pyresponse.iterators.ExactDiagonalizationSolver" target="_top" title="pyresponse.iterators.ExactDiagonalizationSolver" alt="" coords="358,30,541,43"/>
+<area shape="rect" id="node10" href="#pyresponse.iterators.LineqSolver" target="_top" title="pyresponse.iterators.LineqSolver" alt="" coords="205,56,332,70"/>
+<area shape="rect" id="node6" href="#pyresponse.iterators.ExactDiagonalizationSolverTDA" target="_top" title="pyresponse.iterators.ExactDiagonalizationSolverTDA" alt="" coords="567,17,765,30"/>
+<area shape="rect" id="node7" href="#pyresponse.iterators.ExactInv" target="_top" title="pyresponse.iterators.ExactInv" alt="" coords="608,56,724,70"/>
+<area shape="rect" id="node9" href="#pyresponse.iterators.ExactInvCholesky" target="_top" title="pyresponse.iterators.ExactInvCholesky" alt="" coords="591,83,741,97"/>
+<area shape="rect" id="node11" href="#pyresponse.iterators.IterativeLinEqSolver" target="_top" title="pyresponse.iterators.IterativeLinEqSolver" alt="" coords="371,56,528,70"/>
 </map></div>
 <div class="section" id="module-pyresponse.magnetic">
 <span id="pyresponse-magnetic-module"></span><h2>pyresponse.magnetic module<a class="headerlink" href="#module-pyresponse.magnetic" title="Permalink to this headline">¶</a></h2>
@@ -784,6 +834,11 @@ matrices to disk if asked.</p>
 <p>Handle property integrals, taking them from the AO basis to a
 representation of a right-hand side perturbation for CPHF or
 transition properties.</p>
+<dl class="method">
+<dt id="pyresponse.operators.Operator.calculate_ao_integrals">
+<code class="sig-name descname">calculate_ao_integrals</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/operators.html#Operator.calculate_ao_integrals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.operators.Operator.calculate_ao_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="pyresponse.operators.Operator.form_rhs">
 <code class="sig-name descname">form_rhs</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">C</em>, <em class="sig-param">occupations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyresponse/operators.html#Operator.form_rhs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyresponse.operators.Operator.form_rhs" title="Permalink to this definition">¶</a></dt>
@@ -1120,6 +1175,7 @@ zero.</p>
 </map></div>
 <div class="section" id="module-pyresponse">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyresponse" title="Permalink to this headline">¶</a></h2>
+<p>isort:skip_file</p>
 </div>
 </div>
 

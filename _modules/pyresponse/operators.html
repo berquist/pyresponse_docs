@@ -173,7 +173,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">rspvecs_beta</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Operator(label=&quot;</span><span class="si">{self.label}</span><span class="s1">&quot;, is_imaginary=</span><span class="si">{self.is_imaginary}</span><span class="s1">, is_spin_dependent=</span><span class="si">{self.is_spin_dependent}</span><span class="s1">, triplet=</span><span class="si">{self.triplet}</span><span class="s1">, slice_idx=</span><span class="si">{self.slice_idx}</span><span class="s1">)&#39;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;Operator(label=&quot;</span><span class="si">{self.label}</span><span class="s1">&quot;, is_imaginary=</span><span class="si">{self.is_imaginary}</span><span class="s1">, &#39;</span>
+            <span class="sa">f</span><span class="s1">&#39;is_spin_dependent=</span><span class="si">{self.is_spin_dependent}</span><span class="s1">, triplet=</span><span class="si">{self.triplet}</span><span class="s1">, &#39;</span>
+            <span class="sa">f</span><span class="s1">&#39;slice_idx=</span><span class="si">{self.slice_idx}</span><span class="s1">)&#39;</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Operator.calculate_ao_integrals"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.operators.Operator.calculate_ao_integrals">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_ao_integrals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Operator.form_rhs"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.operators.Operator.form_rhs">[docs]</a>    <span class="k">def</span> <span class="nf">form_rhs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">occupations</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Form the right-hand side for CPHF.&quot;&quot;&quot;</span>
