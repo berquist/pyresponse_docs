@@ -149,7 +149,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pyresponse.utils</span> <span class="k">import</span> <span class="n">fix_mocoeffs_shape</span>
+<span class="kn">from</span> <span class="nn">pyresponse.utils</span> <span class="kn">import</span> <span class="n">fix_mocoeffs_shape</span>
 
 
 <div class="viewcode-block" id="AO2MO"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.ao2mo.AO2MO">[docs]</a><span class="k">class</span> <span class="nc">AO2MO</span><span class="p">:</span>
@@ -159,7 +159,7 @@
     <span class="c1"># TODO see</span>
     <span class="c1"># https://github.com/psi4/psi4numpy/blob/master/Tutorials/01_Psi4NumPy-Basics/1f_tensor-manipulation.ipynb</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">fix_mocoeffs_shape</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">occupations</span> <span class="o">=</span> <span class="n">occupations</span>

@@ -148,31 +148,32 @@
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 
-<span class="kn">from</span> <span class="nn">pyresponse.pyscf.ao2mo</span> <span class="k">import</span> <span class="n">AO2MOpyscf</span>
-
-<span class="kn">from</span> <span class="nn">.explicit_equations_full</span> <span class="k">import</span> \
-    <span class="p">(</span><span class="n">form_rpa_a_matrix_mo_singlet_full</span><span class="p">,</span>
-     <span class="n">form_rpa_a_matrix_mo_singlet_ss_full</span><span class="p">,</span>
-     <span class="n">form_rpa_a_matrix_mo_singlet_os_full</span><span class="p">,</span>
-     <span class="n">form_rpa_a_matrix_mo_triplet_full</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_singlet_full</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_singlet_ss_full</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_singlet_os_full</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_triplet_full</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.explicit_equations_partial</span> <span class="k">import</span> \
-    <span class="p">(</span><span class="n">form_rpa_a_matrix_mo_singlet_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_a_matrix_mo_singlet_ss_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_a_matrix_mo_singlet_os_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_a_matrix_mo_triplet_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_singlet_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_singlet_ss_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_singlet_os_partial</span><span class="p">,</span>
-     <span class="n">form_rpa_b_matrix_mo_triplet_partial</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyresponse.explicit_equations_full</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">form_rpa_a_matrix_mo_singlet_full</span><span class="p">,</span>
+    <span class="n">form_rpa_a_matrix_mo_singlet_os_full</span><span class="p">,</span>
+    <span class="n">form_rpa_a_matrix_mo_singlet_ss_full</span><span class="p">,</span>
+    <span class="n">form_rpa_a_matrix_mo_triplet_full</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_singlet_full</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_singlet_os_full</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_singlet_ss_full</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_triplet_full</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyresponse.explicit_equations_partial</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">form_rpa_a_matrix_mo_singlet_os_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_a_matrix_mo_singlet_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_a_matrix_mo_singlet_ss_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_a_matrix_mo_triplet_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_singlet_os_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_singlet_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_singlet_ss_partial</span><span class="p">,</span>
+    <span class="n">form_rpa_b_matrix_mo_triplet_partial</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyresponse.pyscf.ao2mo</span> <span class="kn">import</span> <span class="n">AO2MOpyscf</span>
 
 
 <div class="viewcode-block" id="Solver"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.Solver">[docs]</a><span class="k">class</span> <span class="nc">Solver</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">mocoeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
         <span class="k">assert</span> <span class="p">(</span><span class="n">mocoeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">mocoeffs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
@@ -269,12 +270,12 @@
 
 
 <div class="viewcode-block" id="LineqSolver"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.LineqSolver">[docs]</a><span class="k">class</span> <span class="nc">LineqSolver</span><span class="p">(</span><span class="n">Solver</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ExactLineqSolver"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactLineqSolver">[docs]</a><span class="k">class</span> <span class="nc">ExactLineqSolver</span><span class="p">(</span><span class="n">LineqSolver</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ExactLineqSolver.form_explicit_hessian"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactLineqSolver.form_explicit_hessian">[docs]</a>    <span class="k">def</span> <span class="nf">form_explicit_hessian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -558,7 +559,7 @@
 
 <div class="viewcode-block" id="ExactInv"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactInv">[docs]</a><span class="k">class</span> <span class="nc">ExactInv</span><span class="p">(</span><span class="n">ExactLineqSolver</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">inv_func</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;inv_func&#39;</span><span class="p">)</span>
@@ -589,7 +590,7 @@
 
 <div class="viewcode-block" id="ExactInvCholesky"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactInvCholesky">[docs]</a><span class="k">class</span> <span class="nc">ExactInvCholesky</span><span class="p">(</span><span class="n">ExactLineqSolver</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ExactInvCholesky.invert_explicit_hessian"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactInvCholesky.invert_explicit_hessian">[docs]</a>    <span class="k">def</span> <span class="nf">invert_explicit_hessian</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -623,7 +624,7 @@
 
 <div class="viewcode-block" id="EigSolver"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.EigSolver">[docs]</a><span class="k">class</span> <span class="nc">EigSolver</span><span class="p">(</span><span class="n">Solver</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="EigSolver.norm_xy"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.EigSolver.norm_xy">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -633,15 +634,16 @@
         <span class="n">norm</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">norm</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">norm</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span></div></div>
 
+
 <div class="viewcode-block" id="EigSolverTDA"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.EigSolverTDA">[docs]</a><span class="k">class</span> <span class="nc">EigSolverTDA</span><span class="p">(</span><span class="n">EigSolver</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ExactDiagonalizationSolver"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactDiagonalizationSolver">[docs]</a><span class="k">class</span> <span class="nc">ExactDiagonalizationSolver</span><span class="p">(</span><span class="n">EigSolver</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ExactDiagonalizationSolver.form_explicit_hessian"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactDiagonalizationSolver.form_explicit_hessian">[docs]</a>    <span class="k">def</span> <span class="nf">form_explicit_hessian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -741,7 +743,7 @@
 
 <div class="viewcode-block" id="ExactDiagonalizationSolverTDA"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactDiagonalizationSolverTDA">[docs]</a><span class="k">class</span> <span class="nc">ExactDiagonalizationSolverTDA</span><span class="p">(</span><span class="n">ExactDiagonalizationSolver</span><span class="p">,</span> <span class="n">EigSolverTDA</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ExactDiagonalizationSolverTDA.form_explicit_hessian"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.iterators.ExactDiagonalizationSolverTDA.form_explicit_hessian">[docs]</a>    <span class="k">def</span> <span class="nf">form_explicit_hessian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

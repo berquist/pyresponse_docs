@@ -148,7 +148,7 @@
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.constants</span> <span class="k">as</span> <span class="nn">spc</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">repack_matrix_to_vector</span><span class="p">,</span> <span class="n">fix_mocoeffs_shape</span>
+<span class="kn">from</span> <span class="nn">pyresponse.utils</span> <span class="kn">import</span> <span class="n">fix_mocoeffs_shape</span><span class="p">,</span> <span class="n">repack_matrix_to_vector</span>
 
 
 <div class="viewcode-block" id="Operator"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.operators.Operator">[docs]</a><span class="k">class</span> <span class="nc">Operator</span><span class="p">:</span>
@@ -156,7 +156,7 @@
 <span class="sd">    representation of a right-hand side perturbation for CPHF or</span>
 <span class="sd">    transition properties.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">is_imaginary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_spin_dependent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triplet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">slice_idx</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">is_imaginary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_spin_dependent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">triplet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">slice_idx</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_imaginary</span> <span class="o">=</span> <span class="n">is_imaginary</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_spin_dependent</span> <span class="o">=</span> <span class="n">is_spin_dependent</span>
@@ -172,8 +172,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">rspvecs_alph</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rspvecs_beta</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;Operator(label=&quot;</span><span class="si">{self.label}</span><span class="s1">&quot;, is_imaginary=</span><span class="si">{self.is_imaginary}</span><span class="s1">, is_spin_dependent=</span><span class="si">{self.is_spin_dependent}</span><span class="s1">, triplet=</span><span class="si">{self.triplet}</span><span class="s1">, slice_idx=</span><span class="si">{self.slice_idx}</span><span class="s1">)&#39;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Operator(label=&quot;</span><span class="si">{self.label}</span><span class="s1">&quot;, is_imaginary=</span><span class="si">{self.is_imaginary}</span><span class="s1">, is_spin_dependent=</span><span class="si">{self.is_spin_dependent}</span><span class="s1">, triplet=</span><span class="si">{self.triplet}</span><span class="s1">, slice_idx=</span><span class="si">{self.slice_idx}</span><span class="s1">)&#39;</span>
 
 <div class="viewcode-block" id="Operator.form_rhs"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.operators.Operator.form_rhs">[docs]</a>    <span class="k">def</span> <span class="nf">form_rhs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">occupations</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Form the right-hand side for CPHF.&quot;&quot;&quot;</span>
@@ -238,7 +238,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">operator_ai_supervector_beta</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Operator.form_rhs_geometric"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.operators.Operator.form_rhs_geometric">[docs]</a>    <span class="k">def</span> <span class="nf">form_rhs_geometric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">MO_full</span><span class="p">,</span> <span class="n">mints</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">.integrals</span> <span class="k">import</span> <span class="n">_form_rhs_geometric</span>
+        <span class="kn">from</span> <span class="nn">pyresponse.integrals</span> <span class="kn">import</span> <span class="n">_form_rhs_geometric</span>
         <span class="n">C_</span> <span class="o">=</span> <span class="n">fix_mocoeffs_shape</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
         <span class="n">B_dict</span> <span class="o">=</span> <span class="n">_form_rhs_geometric</span><span class="p">(</span><span class="n">C_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">occupations</span><span class="p">,</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">MO_full</span><span class="p">,</span> <span class="n">mints</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">return_dict</span><span class="p">:</span>

@@ -149,16 +149,14 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">.iterators</span> <span class="k">import</span> <span class="n">LineqSolver</span><span class="p">,</span> <span class="n">ExactLineqSolver</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">form_results</span><span class="p">,</span> <span class="n">form_vec_energy_differences</span><span class="p">,</span>
-                    <span class="n">np_load</span><span class="p">,</span> <span class="n">parse_int_file_2</span><span class="p">,</span>
-                    <span class="n">repack_matrix_to_vector</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyresponse.iterators</span> <span class="kn">import</span> <span class="n">ExactLineqSolver</span><span class="p">,</span> <span class="n">LineqSolver</span>
+<span class="kn">from</span> <span class="nn">pyresponse.utils</span> <span class="kn">import</span> <span class="n">form_results</span><span class="p">,</span> <span class="n">form_vec_energy_differences</span>
 
 
 <div class="viewcode-block" id="CPHF"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.cphf.CPHF">[docs]</a><span class="k">class</span> <span class="nc">CPHF</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Driver for solving the coupled perturbed Hartree-Fock (CPHF) equations.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="o">=</span> <span class="n">solver</span>
 

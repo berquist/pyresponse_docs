@@ -312,9 +312,10 @@
             <span class="n">B</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">contr1</span> <span class="o">-</span> <span class="n">F_grad</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">o</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">contr2</span><span class="p">)</span> <span class="o">-</span> <span class="n">contr3</span>
     <span class="k">return</span> <span class="n">B</span>
 
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">dalton_integrals</span> <span class="o">=</span> <span class="n">parse_aoproper</span><span class="p">(</span><span class="s1">&#39;r_lih_hf_sto-3g/dalton_response_rpa_singlet/AOPROPER&#39;</span><span class="p">)</span>
-    <span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">dalton_label_to_operator</span>
+    <span class="kn">from</span> <span class="nn">pyresponse.utils</span> <span class="kn">import</span> <span class="n">dalton_label_to_operator</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="n">dalton_integrals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">dalton_label_to_operator</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
