@@ -160,10 +160,10 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="o">=</span> <span class="n">solver</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonian</span> <span class="o">=</span> <span class="s1">&#39;rpa&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spin</span> <span class="o">=</span> <span class="s1">&#39;singlet&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonian</span> <span class="o">=</span> <span class="s2">&quot;rpa&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spin</span> <span class="o">=</span> <span class="s2">&quot;singlet&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">solver_type</span> <span class="o">=</span> <span class="s1">&#39;exact&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solver_type</span> <span class="o">=</span> <span class="s2">&quot;exact&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -196,7 +196,7 @@
             <span class="n">hamiltonian</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonian</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">spin</span><span class="p">:</span>
             <span class="n">spin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;frequencies&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;frequencies&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_frequencies</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
 
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">solver_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
@@ -208,7 +208,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">hamiltonian</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spin</span> <span class="o">=</span> <span class="n">spin</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="s1">&#39;exact&#39;</span> <span class="ow">in</span> <span class="n">solver_type</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;exact&quot;</span> <span class="ow">in</span> <span class="n">solver_type</span><span class="p">:</span>
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="p">,</span> <span class="p">(</span><span class="n">ExactLineqSolver</span><span class="p">,))</span>
             <span class="k">for</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequencies</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">form_explicit_hessian</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">frequency</span><span class="p">)</span>
@@ -249,22 +249,34 @@
 
             <span class="n">frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">frequencies</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
             <span class="n">ediff_supervector_alph</span> <span class="o">=</span> <span class="n">ediff_supervector_alph_static</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">ediff_supervector_alph</span><span class="p">[:</span><span class="n">nov_alph</span><span class="p">]</span> <span class="o">=</span> <span class="n">ediff_supervector_alph_static</span><span class="p">[:</span><span class="n">nov_alph</span><span class="p">]</span> <span class="o">-</span> <span class="n">frequency</span>
-            <span class="n">ediff_supervector_alph</span><span class="p">[</span><span class="n">nov_alph</span><span class="p">:]</span> <span class="o">=</span> <span class="n">ediff_supervector_alph_static</span><span class="p">[</span><span class="n">nov_alph</span><span class="p">:]</span> <span class="o">+</span> <span class="n">frequency</span>
+            <span class="n">ediff_supervector_alph</span><span class="p">[:</span><span class="n">nov_alph</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">ediff_supervector_alph_static</span><span class="p">[:</span><span class="n">nov_alph</span><span class="p">]</span> <span class="o">-</span> <span class="n">frequency</span>
+            <span class="p">)</span>
+            <span class="n">ediff_supervector_alph</span><span class="p">[</span><span class="n">nov_alph</span><span class="p">:]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">ediff_supervector_alph_static</span><span class="p">[</span><span class="n">nov_alph</span><span class="p">:]</span> <span class="o">+</span> <span class="n">frequency</span>
+            <span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>
                 <span class="n">ediff_supervector_beta</span> <span class="o">=</span> <span class="n">ediff_supervector_beta_static</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                <span class="n">ediff_supervector_beta</span><span class="p">[:</span><span class="n">nov_beta</span><span class="p">]</span> <span class="o">=</span> <span class="n">ediff_supervector_beta_static</span><span class="p">[:</span><span class="n">nov_beta</span><span class="p">]</span> <span class="o">-</span> <span class="n">frequency</span>
-                <span class="n">ediff_supervector_beta</span><span class="p">[</span><span class="n">nov_beta</span><span class="p">:]</span> <span class="o">=</span> <span class="n">ediff_supervector_beta_static</span><span class="p">[</span><span class="n">nov_beta</span><span class="p">:]</span> <span class="o">+</span> <span class="n">frequency</span>
+                <span class="n">ediff_supervector_beta</span><span class="p">[:</span><span class="n">nov_beta</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">ediff_supervector_beta_static</span><span class="p">[:</span><span class="n">nov_beta</span><span class="p">]</span> <span class="o">-</span> <span class="n">frequency</span>
+                <span class="p">)</span>
+                <span class="n">ediff_supervector_beta</span><span class="p">[</span><span class="n">nov_beta</span><span class="p">:]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">ediff_supervector_beta_static</span><span class="p">[</span><span class="n">nov_beta</span><span class="p">:]</span> <span class="o">+</span> <span class="n">frequency</span>
+                <span class="p">)</span>
 
             <span class="c1"># dim_rows -&gt; (number of operators) * (number of components for each operator)</span>
             <span class="c1"># dim_cols -&gt; total number of response vectors</span>
-            <span class="n">dim_rows</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">)))</span>
+            <span class="n">dim_rows</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">))</span>
+            <span class="p">)</span>
             <span class="n">dim_cols</span> <span class="o">=</span> <span class="n">dim_rows</span>
 
             <span class="c1"># FIXME</span>
-            <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">dim_rows</span><span class="p">,</span> <span class="n">dim_cols</span><span class="p">),</span>
-                               <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">dim_rows</span><span class="p">,</span> <span class="n">dim_cols</span><span class="p">),</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="p">)</span>
 
             <span class="c1"># Form the result blocks between each pair of</span>
             <span class="c1"># operators. Ignore any potential symmetry in the final</span>
@@ -277,12 +289,16 @@
                 <span class="n">col_start</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="k">for</span> <span class="n">iop2</span><span class="p">,</span> <span class="n">op2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">):</span>
                     <span class="n">result_block</span> <span class="o">=</span> <span class="mf">0.0</span>
-                    <span class="n">result_block_alph</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span><span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="p">,</span>
-                                                     <span class="n">op2</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span> <span class="o">/</span> <span class="n">ediff_supervector_alph</span><span class="p">)</span>
+                    <span class="n">result_block_alph</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span>
+                        <span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="p">,</span>
+                        <span class="n">op2</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span> <span class="o">/</span> <span class="n">ediff_supervector_alph</span><span class="p">,</span>
+                    <span class="p">)</span>
                     <span class="n">result_block</span> <span class="o">+=</span> <span class="n">result_block_alph</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>
-                        <span class="n">result_block_beta</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span><span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span><span class="p">,</span>
-                                                         <span class="n">op2</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span> <span class="o">/</span> <span class="n">ediff_supervector_beta</span><span class="p">)</span>
+                        <span class="n">result_block_beta</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span>
+                            <span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span><span class="p">,</span>
+                            <span class="n">op2</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span> <span class="o">/</span> <span class="n">ediff_supervector_beta</span><span class="p">,</span>
+                        <span class="p">)</span>
                         <span class="n">result_block</span> <span class="o">+=</span> <span class="n">result_block_beta</span>
                     <span class="n">result_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result_block</span><span class="p">)</span>
                     <span class="n">row_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_start</span><span class="p">)</span>
@@ -296,7 +312,7 @@
             <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">result_block</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">):</span>
                 <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">result_block</span><span class="o">.</span><span class="n">shape</span>
                 <span class="n">rs</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">row_starts</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">col_starts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-                <span class="n">results</span><span class="p">[</span><span class="n">rs</span><span class="p">:</span><span class="n">rs</span><span class="o">+</span><span class="n">nr</span><span class="p">,</span> <span class="n">cs</span><span class="p">:</span><span class="n">cs</span><span class="o">+</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_block</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">rs</span> <span class="p">:</span> <span class="n">rs</span> <span class="o">+</span> <span class="n">nr</span><span class="p">,</span> <span class="n">cs</span> <span class="p">:</span> <span class="n">cs</span> <span class="o">+</span> <span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_block</span>
 
             <span class="c1"># The / 2 is because of the supervector part.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>
@@ -327,23 +343,35 @@
 
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">frequencies</span><span class="p">)):</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">)):</span>
-                <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">shape</span>
+                <span class="k">assert</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+                    <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">shape</span>
+                <span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>
-                    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_beta</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span><span class="o">.</span><span class="n">shape</span>
+                    <span class="k">assert</span> <span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_beta</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+                        <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span><span class="o">.</span><span class="n">shape</span>
+                    <span class="p">)</span>
 
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">frequencies</span><span class="p">)):</span>
 
             <span class="c1"># dim_rows -&gt; (number of operators) * (number of components for each operator)</span>
             <span class="c1"># dim_cols -&gt; total number of response vectors</span>
-            <span class="n">dim_rows</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">)))</span>
-            <span class="n">dim_cols</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">)))</span>
+            <span class="n">dim_rows</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">))</span>
+            <span class="p">)</span>
+            <span class="n">dim_cols</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">))</span>
+            <span class="p">)</span>
             <span class="k">assert</span> <span class="n">dim_rows</span> <span class="o">==</span> <span class="n">dim_cols</span>
 
             <span class="c1"># FIXME</span>
-            <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">dim_rows</span><span class="p">,</span> <span class="n">dim_cols</span><span class="p">),</span>
-                               <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">dim_rows</span><span class="p">,</span> <span class="n">dim_cols</span><span class="p">),</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="p">)</span>
 
             <span class="c1"># Form the result blocks between each pair of</span>
             <span class="c1"># operators. Ignore any potential symmetry in the final</span>
@@ -356,10 +384,14 @@
                 <span class="n">col_start</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="k">for</span> <span class="n">iop2</span><span class="p">,</span> <span class="n">op2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">operators</span><span class="p">):</span>
                     <span class="n">result_block</span> <span class="o">=</span> <span class="mf">0.0</span>
-                    <span class="n">result_block_alph</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span><span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="p">,</span> <span class="n">op2</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">])</span>
+                    <span class="n">result_block_alph</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span>
+                        <span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_alph</span><span class="p">,</span> <span class="n">op2</span><span class="o">.</span><span class="n">rspvecs_alph</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
+                    <span class="p">)</span>
                     <span class="n">result_block</span> <span class="o">+=</span> <span class="n">result_block_alph</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>
-                        <span class="n">result_block_beta</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span><span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span><span class="p">,</span> <span class="n">op2</span><span class="o">.</span><span class="n">rspvecs_beta</span><span class="p">[</span><span class="n">f</span><span class="p">])</span>
+                        <span class="n">result_block_beta</span> <span class="o">=</span> <span class="n">form_results</span><span class="p">(</span>
+                            <span class="n">op1</span><span class="o">.</span><span class="n">mo_integrals_ai_supervector_beta</span><span class="p">,</span> <span class="n">op2</span><span class="o">.</span><span class="n">rspvecs_beta</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
+                        <span class="p">)</span>
                         <span class="n">result_block</span> <span class="o">+=</span> <span class="n">result_block_beta</span>
                     <span class="n">result_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result_block</span><span class="p">)</span>
                     <span class="n">row_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_start</span><span class="p">)</span>
@@ -373,7 +405,7 @@
             <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">result_block</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">):</span>
                 <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">result_block</span><span class="o">.</span><span class="n">shape</span>
                 <span class="n">rs</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">row_starts</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">col_starts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-                <span class="n">results</span><span class="p">[</span><span class="n">rs</span><span class="p">:</span><span class="n">rs</span><span class="o">+</span><span class="n">nr</span><span class="p">,</span> <span class="n">cs</span><span class="p">:</span><span class="n">cs</span><span class="o">+</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_block</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">rs</span> <span class="p">:</span> <span class="n">rs</span> <span class="o">+</span> <span class="n">nr</span><span class="p">,</span> <span class="n">cs</span> <span class="p">:</span> <span class="n">cs</span> <span class="o">+</span> <span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_block</span>
 
             <span class="c1"># The / 2 is because of the supervector part.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">is_uhf</span><span class="p">:</span>

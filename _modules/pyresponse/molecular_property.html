@@ -153,7 +153,6 @@
 
 
 <div class="viewcode-block" id="MolecularProperty"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.molecular_property.MolecularProperty">[docs]</a><span class="k">class</span> <span class="nc">MolecularProperty</span><span class="p">:</span>
-
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pyscfmol</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># TODO add more type assertions (pyscfmol)</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
@@ -168,16 +167,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="MolecularProperty.run"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.molecular_property.MolecularProperty.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;driver&#39;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;driver&quot;</span><span class="p">)</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">hamiltonian</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">hamiltonian</span> <span class="o">=</span> <span class="s1">&#39;rpa&#39;</span>
+            <span class="n">hamiltonian</span> <span class="o">=</span> <span class="s2">&quot;rpa&quot;</span>
         <span class="k">if</span> <span class="n">spin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">spin</span> <span class="o">=</span> <span class="s1">&#39;singlet&#39;</span>
+            <span class="n">spin</span> <span class="o">=</span> <span class="s2">&quot;singlet&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spin</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solver_type</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="n">hamiltonian</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">spin</span><span class="o">=</span><span class="n">spin</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">solver_type</span><span class="o">=</span><span class="s2">&quot;exact&quot;</span><span class="p">,</span> <span class="n">hamiltonian</span><span class="o">=</span><span class="n">hamiltonian</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">spin</span><span class="o">=</span><span class="n">spin</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="MolecularProperty.form_operators"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.molecular_property.MolecularProperty.form_operators">[docs]</a>    <span class="k">def</span> <span class="nf">form_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This must be implemented in a grandchild class.&quot;</span><span class="p">)</span></div>
@@ -187,8 +188,16 @@
 
 
 <div class="viewcode-block" id="ResponseProperty"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.molecular_property.ResponseProperty">[docs]</a><span class="k">class</span> <span class="nc">ResponseProperty</span><span class="p">(</span><span class="n">MolecularProperty</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pyscfmol</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="n">frequencies</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">pyscfmol</span><span class="p">,</span>
+        <span class="n">mocoeffs</span><span class="p">,</span>
+        <span class="n">moenergies</span><span class="p">,</span>
+        <span class="n">occupations</span><span class="p">,</span>
+        <span class="n">frequencies</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">],</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pyscfmol</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1"># Don&#39;t allow a single number; force one of the basic</span>
@@ -196,8 +205,8 @@
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">frequencies</span>
 
-        <span class="k">if</span> <span class="s1">&#39;solver&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">solver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;solver&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;solver&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;solver&quot;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span>
         <span class="k">else</span><span class="p">:</span>
@@ -207,8 +216,8 @@
         <span class="k">if</span> <span class="n">solver</span><span class="o">.</span><span class="n">tei_mo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">solver</span><span class="o">.</span><span class="n">form_tei_mo</span><span class="p">(</span><span class="n">pyscfmol</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="s1">&#39;driver&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">driver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;driver&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;driver&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">driver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;driver&quot;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">driver</span> <span class="o">=</span> <span class="n">CPHF</span><span class="p">(</span><span class="n">solver</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">driver</span>
@@ -223,24 +232,25 @@
 
 
 <div class="viewcode-block" id="TransitionProperty"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.molecular_property.TransitionProperty">[docs]</a><span class="k">class</span> <span class="nc">TransitionProperty</span><span class="p">(</span><span class="n">MolecularProperty</span><span class="p">):</span>
-
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pyscfmol</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pyscfmol</span><span class="p">,</span> <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="s1">&#39;solver&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">solver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;solver&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;solver&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;solver&quot;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solver</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">solver</span> <span class="o">=</span> <span class="n">iterators</span><span class="o">.</span><span class="n">ExactDiagonalizationSolver</span><span class="p">(</span><span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span><span class="p">)</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="n">iterators</span><span class="o">.</span><span class="n">ExactDiagonalizationSolver</span><span class="p">(</span>
+                <span class="n">mocoeffs</span><span class="p">,</span> <span class="n">moenergies</span><span class="p">,</span> <span class="n">occupations</span>
+            <span class="p">)</span>
 
         <span class="c1"># TODO this doesn&#39;t belong here.</span>
         <span class="k">if</span> <span class="n">solver</span><span class="o">.</span><span class="n">tei_mo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">solver</span><span class="o">.</span><span class="n">form_tei_mo</span><span class="p">(</span><span class="n">pyscfmol</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;driver&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="n">driver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;driver&#39;</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;do_tda&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;driver&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">driver</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;driver&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;do_tda&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="n">driver</span> <span class="o">=</span> <span class="n">TDA</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">driver</span> <span class="o">=</span> <span class="n">TDHF</span>

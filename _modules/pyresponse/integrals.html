@@ -149,7 +149,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">STARS</span> <span class="o">=</span> <span class="s1">&#39;********&#39;</span>
+<span class="n">STARS</span> <span class="o">=</span> <span class="s2">&quot;********&quot;</span>
 
 
 <div class="viewcode-block" id="Integrals"><a class="viewcode-back" href="../../pyresponse.html#pyresponse.integrals.Integrals">[docs]</a><span class="k">class</span> <span class="nc">Integrals</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -187,7 +187,7 @@
     <span class="sd">&quot;&quot;&quot;Return the bytes present in the given binary file name.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">binaryfilename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">binaryfile</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">binaryfilename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">binaryfile</span><span class="p">:</span>
         <span class="n">readbytes</span> <span class="o">=</span> <span class="n">binaryfile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">readbytes</span></div>
@@ -201,15 +201,10 @@
     <span class="n">integral_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
     <span class="c1"># Specify the encoding explicitly, so there&#39;s no confusion.</span>
-    <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
 
     <span class="c1"># There are a few labels we want to ignore.</span>
-    <span class="n">labels_to_ignore</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;HUCKOVLP&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;HUCKEL&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;HJPOPOVL&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;EOFLABEL&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
+    <span class="n">labels_to_ignore</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;HUCKOVLP&quot;</span><span class="p">,</span> <span class="s2">&quot;HUCKEL&quot;</span><span class="p">,</span> <span class="s2">&quot;HJPOPOVL&quot;</span><span class="p">,</span> <span class="s2">&quot;EOFLABEL&quot;</span><span class="p">)</span>
 
     <span class="c1"># For now, we naively read the whole file into memory, split</span>
     <span class="c1"># directly on the delimiter, *then* iterate. This will eventually</span>
@@ -250,9 +245,9 @@
             <span class="n">tril_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">nbasis</span><span class="p">)</span>
             <span class="n">integrals_square</span><span class="p">[</span><span class="n">tril_indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">integrals_tril</span>
             <span class="n">diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">integrals_square</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nbasis</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">shape</span> <span class="o">==</span> <span class="s1">&#39;SYMMETRI&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">shape</span> <span class="o">==</span> <span class="s2">&quot;SYMMETRI&quot;</span><span class="p">:</span>
                 <span class="n">integrals_square</span> <span class="o">=</span> <span class="o">-</span><span class="n">diag</span> <span class="o">+</span> <span class="n">integrals_square</span> <span class="o">+</span> <span class="n">integrals_square</span><span class="o">.</span><span class="n">T</span>
-            <span class="k">elif</span> <span class="n">shape</span> <span class="o">==</span> <span class="s1">&#39;ANTISYMM&#39;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">shape</span> <span class="o">==</span> <span class="s2">&quot;ANTISYMM&quot;</span><span class="p">:</span>
                 <span class="n">integrals_square</span> <span class="o">=</span> <span class="o">-</span><span class="n">diag</span> <span class="o">+</span> <span class="n">integrals_square</span> <span class="o">-</span> <span class="n">integrals_square</span><span class="o">.</span><span class="n">T</span>
                 <span class="c1"># If the integrals are antisymmetrized, the whole</span>
                 <span class="c1"># thing should sum to zero.</span>
@@ -265,10 +260,10 @@
             <span class="k">assert</span> <span class="n">integrals_square</span><span class="p">[</span><span class="n">tril_indices</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">==</span> <span class="n">integrals_tril</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
             <span class="n">record_dict</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
-                <span class="s1">&#39;nbasis&#39;</span><span class="p">:</span> <span class="n">nbasis</span><span class="p">,</span>
-                <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span>
-                <span class="s1">&#39;integrals&#39;</span><span class="p">:</span> <span class="n">integrals_square</span><span class="p">,</span>
+                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+                <span class="s2">&quot;nbasis&quot;</span><span class="p">:</span> <span class="n">nbasis</span><span class="p">,</span>
+                <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span>
+                <span class="s2">&quot;integrals&quot;</span><span class="p">:</span> <span class="n">integrals_square</span><span class="p">,</span>
             <span class="p">}</span>
             <span class="n">integral_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">record_dict</span>
 
@@ -277,20 +272,21 @@
 
 <span class="k">def</span> <span class="nf">_form_rhs_geometric</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">occupations</span><span class="p">,</span> <span class="n">natoms</span><span class="p">,</span> <span class="n">MO</span><span class="p">,</span> <span class="n">mints</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">psi4</span>
+
     <span class="n">pC</span> <span class="o">=</span> <span class="n">psi4</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
     <span class="n">nocc</span><span class="p">,</span> <span class="n">nvirt</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">occupations</span>
     <span class="n">norb</span> <span class="o">=</span> <span class="n">nocc</span> <span class="o">+</span> <span class="n">nvirt</span>
     <span class="n">o</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nocc</span><span class="p">)</span>
     <span class="n">v</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">nocc</span><span class="p">,</span> <span class="n">norb</span><span class="p">)</span>
-    <span class="n">cart</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_X&#39;</span><span class="p">,</span> <span class="s1">&#39;_Y&#39;</span><span class="p">,</span> <span class="s1">&#39;_Z&#39;</span><span class="p">]</span>
-    <span class="n">oei_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;S&quot;</span> <span class="p">:</span> <span class="s2">&quot;OVERLAP&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span> <span class="p">:</span> <span class="s2">&quot;KINETIC&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span> <span class="p">:</span> <span class="s2">&quot;POTENTIAL&quot;</span><span class="p">}</span>
+    <span class="n">cart</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_X&quot;</span><span class="p">,</span> <span class="s2">&quot;_Y&quot;</span><span class="p">,</span> <span class="s2">&quot;_Z&quot;</span><span class="p">]</span>
+    <span class="n">oei_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;S&quot;</span><span class="p">:</span> <span class="s2">&quot;OVERLAP&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="s2">&quot;KINETIC&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">:</span> <span class="s2">&quot;POTENTIAL&quot;</span><span class="p">}</span>
 
     <span class="c1"># Fock matrix (MO)</span>
     <span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mints</span><span class="o">.</span><span class="n">ao_kinetic</span><span class="p">()))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mints</span><span class="o">.</span><span class="n">ao_potential</span><span class="p">()))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
     <span class="n">H</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="n">V</span>
-    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;pqii-&gt;pq&#39;</span><span class="p">,</span> <span class="n">MO</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">])</span>
-    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;piqi-&gt;pq&#39;</span><span class="p">,</span> <span class="n">MO</span><span class="p">[:,</span> <span class="n">o</span><span class="p">,</span> <span class="p">:,</span> <span class="n">o</span><span class="p">])</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;pqii-&gt;pq&quot;</span><span class="p">,</span> <span class="n">MO</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">])</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;piqi-&gt;pq&quot;</span><span class="p">,</span> <span class="n">MO</span><span class="p">[:,</span> <span class="n">o</span><span class="p">,</span> <span class="p">:,</span> <span class="n">o</span><span class="p">])</span>
     <span class="n">F</span> <span class="o">=</span> <span class="n">H</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">J</span><span class="p">)</span> <span class="o">-</span> <span class="n">K</span>
 
     <span class="n">deriv1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -333,8 +329,8 @@
     <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">natoms</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
             <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span> <span class="o">+</span> <span class="n">cart</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-            <span class="n">contr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;pqmm-&gt;pq&#39;</span><span class="p">,</span> <span class="n">deriv1</span><span class="p">[</span><span class="s2">&quot;TEI&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">])</span>
-            <span class="n">contr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;pmmq-&gt;pq&#39;</span><span class="p">,</span> <span class="n">deriv1</span><span class="p">[</span><span class="s2">&quot;TEI&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">][:,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="p">:])</span>
+            <span class="n">contr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;pqmm-&gt;pq&quot;</span><span class="p">,</span> <span class="n">deriv1</span><span class="p">[</span><span class="s2">&quot;TEI&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">])</span>
+            <span class="n">contr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;pmmq-&gt;pq&quot;</span><span class="p">,</span> <span class="n">deriv1</span><span class="p">[</span><span class="s2">&quot;TEI&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">][:,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="p">:])</span>
             <span class="n">F_grad</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">deriv1</span><span class="p">[</span><span class="s2">&quot;T&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="n">deriv1</span><span class="p">[</span><span class="s2">&quot;V&quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">contr1</span><span class="p">)</span> <span class="o">-</span> <span class="n">contr2</span>
     <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">natoms</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -346,9 +342,12 @@
     <span class="k">return</span> <span class="n">B</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">dalton_integrals</span> <span class="o">=</span> <span class="n">parse_aoproper</span><span class="p">(</span><span class="s1">&#39;r_lih_hf_sto-3g/dalton_response_rpa_singlet/AOPROPER&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">dalton_integrals</span> <span class="o">=</span> <span class="n">parse_aoproper</span><span class="p">(</span>
+        <span class="s2">&quot;r_lih_hf_sto-3g/dalton_response_rpa_singlet/AOPROPER&quot;</span>
+    <span class="p">)</span>
     <span class="kn">from</span> <span class="nn">pyresponse.utils</span> <span class="kn">import</span> <span class="n">dalton_label_to_operator</span>
+
     <span class="n">labels</span> <span class="o">=</span> <span class="n">dalton_integrals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">dalton_label_to_operator</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
