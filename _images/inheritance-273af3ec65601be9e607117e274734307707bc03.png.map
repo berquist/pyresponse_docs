@@ -1,5 +1,0 @@
-<map id="inheritancec636507aa9" name="inheritancec636507aa9">
-<area shape="rect" id="node1" href="#pyresponse.cphf.CPHF" target="_top" title="Driver for solving the coupled perturbed Hartree&#45;Fock (CPHF) equations." alt="" coords="5,5,172,31"/>
-<area shape="rect" id="node3" href="#pyresponse.td.TDHF" target="_top" title="Driver for solving the time&#45;dependent Hartree&#45;Fock (TDHF)" alt="" coords="220,5,373,31"/>
-<area shape="rect" id="node2" href="#pyresponse.td.TDA" target="_top" title="Driver for solving the time&#45;dependent Hartree&#45;Fock equations with" alt="" coords="421,5,567,31"/>
-</map>

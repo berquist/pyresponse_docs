@@ -1,6 +1,0 @@
-<map id="inheritance5ee565479c" name="inheritance5ee565479c">
-<area shape="rect" id="node1" href="#pyresponse.magnetic.ElectronicGTensor" target="_top" title="pyresponse.magnetic.ElectronicGTensor" alt="" coords="564,4,764,22"/>
-<area shape="rect" id="node2" href="#pyresponse.molecular_property.ResponseProperty" target="_top" title="pyresponse.molecular_property.ResponseProperty" alt="" coords="284,22,530,40"/>
-<area shape="rect" id="node3" href="#pyresponse.magnetic.Magnetizability" target="_top" title="pyresponse.magnetic.Magnetizability" alt="" coords="570,39,759,57"/>
-<area shape="rect" id="node4" href="#pyresponse.molecular_property.MolecularProperty" target="_top" title="pyresponse.molecular_property.MolecularProperty" alt="" coords="4,22,250,40"/>
-</map>
